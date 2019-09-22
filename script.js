@@ -8,7 +8,7 @@ am4core.useTheme(am4themes_animated);
 
 var temperatures = {
     "EUROPE": [
-        ["Austria",0,0,16217,13340,164878,0,0,7505,9801,4224,24307,6676,0,952,1339,6209,0],
+        ["Austria",233,0,0,16217,13340,164878,0,0,7505,9801,4224,24307,6676,0,952,1339,6209,0],
         ["Belgium",2112059,1816033,1368022,1098944,1537163,949633,479138,272765,1069563,1008559,618829,329892,1255723,1211440,1262923,2818613,1485857],
         ["Bulgaria",0,0,0,0,0,59505,13127,0,0,0,0,0,0,14593,0,0,26690],
         ["Croatia",0,0,0,19870,9497,29040,0,0,0,0,0,0,0,0,0,5443,0],
@@ -180,7 +180,7 @@ var temperatures = {
 
 var startYear = 2003;
 var endYear = 2019;
-var currentYear = 2019;
+var currentYear = 2011;
 var colorSet = new am4core.ColorSet();
 
 var chart = am4core.create("chartdiv", am4charts.RadarChart);
@@ -191,8 +191,8 @@ chart.startAngle = 270 - 180;
 chart.endAngle = 270 + 180;
 
 chart.padding(5,15,5,10)
-chart.radius = am4core.percent(120);
-chart.innerRadius = am4core.percent(60);
+chart.radius = am4core.percent(80);
+chart.innerRadius = am4core.percent(20);
 
 // year label goes in the middle
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
@@ -218,7 +218,7 @@ chart.scrollbarX.exportable = false;
 
 // vertical orientation for zoom out button and scrollbar to be positioned properly
 chart.rightAxesContainer.layout = "vertical";
-chart.rightAxesContainer.padding(120, 20, 120, 20);
+chart.rightAxesContainer.padding(10, 0, 10, 0);
 
 // category axis
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -247,7 +247,7 @@ categoryAxis.tooltip.defaultState.properties.opacity = 0;
 // value axis
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 2;
-valueAxis.max = 1900000;
+valueAxis.max = 900000;
 valueAxis.baseValue = 100000;
 valueAxis.strictMinMax = true;
 valueAxis.tooltip.defaultState.properties.opacity = 0;
@@ -267,12 +267,12 @@ series.columns.template.width = am4core.percent(90);
 series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
-// series.zIndex = 0;
 series.tooltipText = "{categoryX}:{valueY.value}";
-console.log("{categoryX}:{valueY.value}");
+// series.tooltipText = "{categoryX}:test";
+
 
 // this makes columns to be of a different color, depending on value
-series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 792736, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
+series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
 
 // cursor
 var cursor = new am4charts.RadarCursor();
@@ -291,8 +291,9 @@ cursor.fullWidthLineX = true;
 // year slider
 var yearSliderContainer = chart.createChild(am4core.Container);
 yearSliderContainer.layout = "vertical";
-yearSliderContainer.padding(160, 38, 40, 38);
-yearSliderContainer.width = am4core.percent(90);
+yearSliderContainer.padding(0, 38, 0, 38);
+yearSliderContainer.width = am4core.percent(80);
+yearSliderContainer.align = "center";
 
 var yearSlider = yearSliderContainer.createChild(am4core.Slider);
 yearSlider.events.on("rangechanged", function () {
