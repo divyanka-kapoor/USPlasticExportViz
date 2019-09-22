@@ -271,7 +271,7 @@ series.tooltipText = "{categoryX}:{valueY.value}";
 // series.tooltipText = "{categoryX}:test";
 
 
-// this makes columns to be of a different color, depending on value
+// this makes columns to be of a different color depending on value
 series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
 
 // cursor
