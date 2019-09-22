@@ -3,11 +3,22 @@
   "version": "1.0.0",
   "description": "Data Visualization for US Plastic Export",
   "main": "script.js",
-  "dependencies": {},
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.6.1",
+    "@amcharts/amcharts4-geodata": "^4.1.7"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "divyanka",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanka-kapoor/USPlasticExportViz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/divyanka-kapoor/USPlasticExportViz/issues"
+  },
+  "homepage": "https://github.com/divyanka-kapoor/USPlasticExportViz#readme"
 }
