@@ -185,7 +185,7 @@ var currentYear = 2011;
 var colorSet = new am4core.ColorSet();
 
 var chart = am4core.create("chartdiv", am4charts.RadarChart);
-chart.numberFormatter.numberFormat = "kg";
+chart.numberFormatter.numberFormat = " #.0a kg";
 chart.hiddenState.properties.opacity = 0;
 
 chart.startAngle = 270 - 180;
@@ -248,13 +248,13 @@ categoryAxis.tooltip.defaultState.properties.opacity = 0;
 // value axis
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 2;
-valueAxis.max = 9000000;
+valueAxis.max = 12000000;
 valueAxis.baseValue = 0;
 valueAxis.strictMinMax = true;
 valueAxis.tooltip.defaultState.properties.opacity = 0;
 valueAxis.tooltip.animationDuration = 0;
 valueAxis.cursorTooltipEnabled = true;
-valueAxis.zIndex = 10;
+valueAxis.zIndex = 1;
 
 var valueAxisRenderer = valueAxis.renderer;
 valueAxisRenderer.axisFills.template.disabled = true;
@@ -269,9 +269,6 @@ series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
 series.tooltipText = "{categoryX}:{valueY.value}";
-console.log(series.scale);
-series.name = "Test";
-// series.tooltipText = "{categoryX}:test";
 
 
 // this makes columns to be of a different color depending on value

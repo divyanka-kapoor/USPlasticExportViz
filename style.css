@@ -33,6 +33,7 @@ h1 {
   text-align: center;
   left: 20%;
   color: #333745;
+  font-weight: normal; 
 }
 
 .counter{
