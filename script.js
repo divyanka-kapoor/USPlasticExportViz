@@ -238,7 +238,7 @@ categoryAxis.tooltip.label.textAlign = "middle";
 var categoryAxisRenderer = categoryAxis.renderer;
 var categoryAxisLabel = categoryAxisRenderer.labels.template;
 categoryAxisLabel.location = 0.5;
-categoryAxisLabel.radius = 28;
+categoryAxisLabel.radius = 34;
 categoryAxisLabel.relativeRotation = 90;
 categoryAxisLabel.tooltipPosition = "pointer";
 categoryAxis.mouseEnabled = true;
@@ -268,6 +268,7 @@ valueAxis.tooltip.defaultState.properties.opacity = 0;
 valueAxis.tooltip.animationDuration = 0;
 valueAxis.cursorTooltipEnabled = true;
 valueAxis.zIndex = 10;
+valueAxis.dx = -25;
 
 var valueAxisRenderer = valueAxis.renderer;
 valueAxisRenderer.axisFills.template.disabled = true;
@@ -329,7 +330,7 @@ label.isMeasured = false;
 
 var scaleRangeSlider = yearSliderContainer.createChild(am4core.Slider);
 scaleRangeSlider.orientation = "horizontal";
-scaleRangeSlider.start = 0;
+scaleRangeSlider.start = 0.35;
 scaleRangeSlider.exportable = false;
 scaleRangeSlider.background.fill = am4core.color("#676767");
 scaleRangeSlider.events.on("rangechanged", function () {
@@ -340,7 +341,7 @@ scaleRangeSlider.events.on("rangechanged", function () {
 
 var label = scaleRangeSlider.createChild(am4core.Label);
 label.text = "Change Scale : ";
-label.dx = -135;
+label.dx = -125;
 label.dy = -5;
 label.isMeasured = false;
 
@@ -391,14 +392,14 @@ function createRange(name, continentData, index) {
     axisRange.endCategory = continentData[continentData.length - 1][0];
 
     // every 4th color for a bigger contrast
-    axisRange.axisFill.fill = colorSet.getIndex(index * 4);
+    axisRange.axisFill.fill = colorSet.getIndex(index * 6);
     axisRange.grid.disabled = true;
     axisRange.label.interactionsEnabled = false;
     axisRange.label.bent = true;
 
     var axisFill = axisRange.axisFill;
     axisFill.innerRadius = -0.001; // almost the same as 100%, we set it in pixels as later we animate this property to some pixel value
-    axisFill.radius = -20; // negative radius means it is calculated from max radius
+    axisFill.radius = -30; // negative radius means it is calculated from max radius
     axisFill.disabled = false; // as regular fills are disabled, we need to enable this one
     axisFill.fillOpacity = 1;
     axisFill.togglable = true;
@@ -425,9 +426,12 @@ function createRange(name, continentData, index) {
     var axisLabel = axisRange.label;
     axisLabel.location = 0.5;
     axisLabel.fill = am4core.color("black");
-    axisLabel.radius = 3;
+    axisLabel.fontSize = 20;
+    axisLabel.fontWeight = "bold";
+    axisLabel.verticalCenter = "center";
+    axisLabel.radius = 4;
     axisLabel.relativeRotation = 0;
-    // axisLabel.bent = true;
+    axisLabel.bent = true;
 }
 
 
