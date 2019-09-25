@@ -288,6 +288,44 @@ series.tooltipText = "{categoryX}:{valueY.value}";
 // this makes columns to be of a different color depending on value
 series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
 
+// var heatLegend = container.createChild(am4charts.HeatLegend);
+
+var heatLegend = chart.leftAxesContainer.createChild(am4charts.HeatLegend);
+// heatLegend.layout = "vertical";
+// heatLegend.position = "left";
+// heatLegend.position = "vertical";
+heatLegend.valign = "middle";
+heatLegend.orientation = "vertical";
+heatLegend.height = am4core.percent(70);
+heatLegend.width = am4core.percent(10);
+// heatLegend.contentValign = true;
+// heatLegend.contentAlign = "vertical";
+heatLegend.series = series;
+heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
+// heatLegend.valueAxis.renderer.minGridDistance = 30;
+//
+// // heat legend behavior
+// series.columns.template.events.on("over", function(event) {
+//   handleHover(event.target);
+// })
+//
+// series.columns.template.events.on("hit", function(event) {
+//   handleHover(event.target);
+// })
+//
+// function handleHover(column) {
+//   if (!isNaN(column.dataItem.value)) {
+//     heatLegend.valueAxis.showTooltipAt()
+//   }
+//   else {
+//     heatLegend.valueAxis.hideTooltip();
+//   }
+// }
+//
+// series.columns.template.events.on("out", function(event) {
+//   heatLegend.valueAxis.hideTooltip();
+// })
+
 // cursor
 var cursor = new am4charts.RadarCursor();
 chart.cursor = cursor;

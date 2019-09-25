@@ -36,6 +36,10 @@ h1 {
   font-weight: normal;
 }
 
+#numbero_doice {
+  background-color: #B8DBEE;
+}
+
 .counter{
   position: absolute;
   top: 60%;
