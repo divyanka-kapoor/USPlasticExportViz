@@ -185,6 +185,11 @@ var colorSet = new am4core.ColorSet();
 
 var chart = am4core.create("chartdiv", am4charts.RadarChart);
 chart.numberFormatter.numberFormat = " #.0a kg";
+chart.numberFormatter.bigNumberPrefixes = [
+  { "number": 1e+3, "suffix": "K" },
+  { "number": 1e+6, "suffix": "M" },
+  { "number": 1e+9, "suffix": "B" }
+];
 chart.hiddenState.properties.opacity = 0;
 
 chart.startAngle = 270 - 180;
@@ -215,6 +220,7 @@ chart.scrollbarX.parent = chart.rightAxesContainer;
 chart.scrollbarX.orientation = "vertical";
 chart.scrollbarX.align = "center";
 chart.scrollbarX.exportable = false;
+chart.scrollbarX.label = "test";
 
 // vertical orientation for zoom out button and scrollbar to be positioned properly
 chart.rightAxesContainer.layout = "vertical";
@@ -224,12 +230,19 @@ chart.rightAxesContainer.padding(120, 20, 120, 20);
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.dataFields.category = "country";
+categoryAxis.tooltip.maxWidth = 200;
+categoryAxis.tooltip.label.wrap = true;
+categoryAxis.tooltip.label.textAlign = "middle";
+
 
 var categoryAxisRenderer = categoryAxis.renderer;
 var categoryAxisLabel = categoryAxisRenderer.labels.template;
 categoryAxisLabel.location = 0.5;
 categoryAxisLabel.radius = 28;
 categoryAxisLabel.relativeRotation = 90;
+categoryAxisLabel.tooltipPosition = "pointer";
+categoryAxis.mouseEnabled = true;
+
 
 categoryAxisRenderer.fontSize = 15;
 categoryAxisRenderer.minGridDistance = 10;
@@ -247,7 +260,7 @@ categoryAxis.tooltip.defaultState.properties.opacity = 0;
 
 // value axis
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.min = 2;
+valueAxis.min = 100;
 valueAxis.max = 12000000;
 valueAxis.baseValue = 0;
 valueAxis.strictMinMax = true;
@@ -303,11 +316,32 @@ yearSlider.events.on("rangechanged", function () {
 yearSlider.orientation = "horizontal";
 yearSlider.start = 0.5;
 yearSlider.exportable = false;
+yearSlider.background.fill = am4core.color("#676767");
 // yearSlider.background = am4core.color("white");
+
+
 
 var label = yearSlider.createChild(am4core.Label);
 label.text = "Year : ";
 label.dx = -50;
+label.dy = -5;
+label.isMeasured = false;
+
+var scaleRangeSlider = yearSliderContainer.createChild(am4core.Slider);
+scaleRangeSlider.orientation = "horizontal";
+scaleRangeSlider.start = 0;
+scaleRangeSlider.exportable = false;
+scaleRangeSlider.background.fill = am4core.color("#676767");
+scaleRangeSlider.events.on("rangechanged", function () {
+    var start = scaleRangeSlider.start;
+    valueAxis.max = 1200000 * Math.pow(10,start*3);
+})
+
+
+var label = scaleRangeSlider.createChild(am4core.Label);
+label.text = "Change Scale : ";
+label.dx = -135;
+label.dy = -5;
 label.isMeasured = false;
 
 chart.data = generateRadarData();
@@ -322,18 +356,10 @@ function generateRadarData() {
           var rawDataItem = { "country": country[0] }
 
           for (var y = 2; y < country.length; y++) {
-              // function sort(arr, value) {
-              //    return arr.filter(function(ele){
-              //        return ele != value;
-              //    });
-              // }
               rawDataItem["value" + (startYear + y - 2)] = country[y];
-              // var result = arrayRemove(country, 0);
-
           }
 
           data.push(rawDataItem);
-          // console.log(rawDataItem);
       });
 
       createRange(continent, continentData, i);
@@ -352,6 +378,7 @@ function updateRadarData(year) {
         chart.invalidateRawData();
     }
 }
+
 
 function createRange(name, continentData, index) {
 
@@ -408,6 +435,7 @@ function createRange(name, continentData, index) {
 var slider = yearSliderContainer.createChild(am4core.Slider);
 slider.start = 1;
 slider.exportable = false;
+slider.background.fill = am4core.color("#676767");
 slider.events.on("rangechanged", function () {
     var start = slider.start;
 
@@ -421,12 +449,13 @@ var label = slider.createChild(am4core.Label);
 label.text = "Change Style : ";
 label.dx = -120;
 label.isMeasured = false;
+label.dy = -5;
 
-function am4themes_YankTheme(target) {
-  if (target instanceof am4charts.Axis) {
-    target.background.fill = am4core.color("#DCCCA3");
-  }
-}
+// function am4themes_YankTheme(target) {
+//   if (target instanceof am4charts.Axis) {
+//     target.background.fill = am4core.color("#DCCCA3");
+//   }
+// }
 
 /* Apply it */
 // am4core.useTheme(am4themes_myTheme);
