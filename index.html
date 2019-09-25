@@ -3,16 +3,118 @@
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
+    <title> US Plastic Waste Export</title>
+    <script>
+      // var kg = 371021215.13;
+      // var interval = setInterval( increment, 1000);
+      // function increment(){
+      //     kg = kg + 16.08;
+      //     num_kg.innerText = kg;
+      // }
+      //
+      // var dol = 150991224.20
+      // var interval = setInterval( increment1, 1000);
+      // function increment1(){
+      //     dol = dol + 6.54;
+      // }
+      //
+      // var num_kg = document.getElementById('waste_kg');
+      //
+      //
+      //
+      // function incrementSecondsKg() {
+      //   todaykg_sep24 += 16.08;
+      //
+      //
+      // }
+      // function incrementSecondsDol(){
+      //   todaydol_sep24 += 6.54;
+      //   num_dol.innerText = todaydol_sep24;
+      //   // el.innerText = "Total waste exported " + today_val_sep24 + " kg";
+      // }
+      // function counter() {
+      //   setInterval(incrementSecondsKg(), 1000);
+      //   setInterval(incrementSecondsDol(), 1000);
+      // }
+
+      function counter()
+      {
+        var num_kg = document.getElementById('waste_kg');
+        var num_dol = document.getElementById('waste_dol');
+        var kg = 371021215;
+        var dol = 150991224;
+
+
+        var funcNameHere = function(){
+          kg = kg + 16;
+
+          num_kg.innerText = kg.toString().slice(0,3) + "," + kg.toString().slice(3,6) + "," + kg.toString().slice(6,9) + " kgs of plastic waste exported in 2019";
+          // num_dol
+        }
+          // This block will be executed 100 times.
+          setInterval(funcNameHere, 1000);
+          funcNameHere();
+        }   // End
+       window.onload = counter;
+    </script>
+
   </head>
   <body>
-    <h1 align="center"> US EXPORT WASTE VISUALIZATION</h1>
-    <p>
-       <br>
+    <section class="cd-section visible" id = "numbero_uno">
+        <h1 class="display-1 text-center">US PLASTIC WASTE EXPORT</h1>
+      <!-- <h1 align="center"> </h1> -->
+      <br />
+      <div class="counter" id="waste_kg" >
+      </div>
+      <div class="counter" id="waste_dol">
+      </div>
       </p>
-    <div id="chartdiv"></div>
-    <br>
-    <script src = "script.js"></script>
+    </section>
+    <section class="cd-section visible" id = "numbero_doice">
+       <div>
+         <div class="intro">
+           <p>
+             <h1></t>OUT OF SIGHT OUT OF MIND? </t></h1>
+              <br>
+              United States is the top exporter of Plastic Waste worldwide, sending over <u>a MILLION tons</u> of Plastic waste overseas in 2018. Majority of this waste goes to developing countries, who don't have the resources to properly manage the waste, and thus, a huge propotion of this waste ends up in landfills and our oceans.
+              <br />
+              <br />
+              Here's a sneak peak into the Plastic Waste exports from US to different countries from 2003 to 2019 (July).
+
+            <br />
+            <br />
+         </p>
+         </div>
+       </div>
+    </section>
+
+    <section class="cd-section visible">
+      <div class = "container">
+        <div id="chartdiv">
+          <br>
+          <script src = "script.js"></script>
+        </div>
+      </div>
+    <p align = "center">
+      Chart for total amount of Waste exported by US worldwide (2003 - Jul 2019)
+      <br />
+    </p>
+  </section>
+      <!-- <h4 align = "center"> Let's look at how this would look on a map</h4>
+      <br />
+      <h4 align = "center">Why is this important?</h4>
+      <div class = " ">
+
+      </div>
+      <p>
+         1. Our plastic consumption far outpaces our ability to dispose of it.
+         <br />
+         2. Improve domestic recycling
+      </p> -->
+
   </body>
 </html>

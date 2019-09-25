@@ -2,6 +2,7 @@
 
 // Themes begin
 am4core.useTheme(am4themes_dark);
+// am4core.useTheme(am4themes_frozen);
 am4core.useTheme(am4themes_animated);
 // Themes end
 
@@ -190,9 +191,9 @@ chart.hiddenState.properties.opacity = 0;
 chart.startAngle = 270 - 180;
 chart.endAngle = 270 + 180;
 
-chart.padding(5,15,5,10)
+chart.padding(5, 15, 5, 10)
 chart.radius = am4core.percent(80);
-chart.innerRadius = am4core.percent(20);
+chart.innerRadius = am4core.percent(25);
 
 // year label goes in the middle
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
@@ -247,8 +248,8 @@ categoryAxis.tooltip.defaultState.properties.opacity = 0;
 // value axis
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 2;
-valueAxis.max = 900000;
-valueAxis.baseValue = 100000;
+valueAxis.max = 9000000;
+valueAxis.baseValue = 0;
 valueAxis.strictMinMax = true;
 valueAxis.tooltip.defaultState.properties.opacity = 0;
 valueAxis.tooltip.animationDuration = 0;
@@ -268,11 +269,13 @@ series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
 series.tooltipText = "{categoryX}:{valueY.value}";
+console.log(series.scale);
+series.name = "Test";
 // series.tooltipText = "{categoryX}:test";
 
 
 // this makes columns to be of a different color depending on value
-series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
+series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
 
 // cursor
 var cursor = new am4charts.RadarCursor();
@@ -291,9 +294,10 @@ cursor.fullWidthLineX = true;
 // year slider
 var yearSliderContainer = chart.createChild(am4core.Container);
 yearSliderContainer.layout = "vertical";
-yearSliderContainer.padding(0, 38, 0, 38);
+yearSliderContainer.padding(5, 38, 0, 38);
 yearSliderContainer.width = am4core.percent(80);
 yearSliderContainer.align = "center";
+
 
 var yearSlider = yearSliderContainer.createChild(am4core.Slider);
 yearSlider.events.on("rangechanged", function () {
@@ -302,6 +306,7 @@ yearSlider.events.on("rangechanged", function () {
 yearSlider.orientation = "horizontal";
 yearSlider.start = 0.5;
 yearSlider.exportable = false;
+// yearSlider.background = am4core.color("white");
 
 chart.data = generateRadarData();
 
@@ -351,7 +356,7 @@ function createRange(name, continentData, index) {
     // every 3rd color for a bigger contrast
     axisRange.axisFill.fill = colorSet.getIndex(index * 3);
     axisRange.grid.disabled = true;
-    axisRange.label.interactionsEnabled = false;
+    axisRange.label.interactionsEnabled = true;
     axisRange.label.bent = true;
 
     var axisFill = axisRange.axisFill;
@@ -385,7 +390,10 @@ function createRange(name, continentData, index) {
     axisLabel.fill = am4core.color("#ffffff");
     axisLabel.radius = 3;
     axisLabel.relativeRotation = 0;
+    // axisLabel.bent = true;
 }
+
+
 
 var slider = yearSliderContainer.createChild(am4core.Slider);
 slider.start = 1;
@@ -398,3 +406,12 @@ slider.events.on("rangechanged", function () {
 
     valueAxis.renderer.axisAngle = chart.startAngle;
 })
+
+function am4themes_YankTheme(target) {
+  if (target instanceof am4charts.Axis) {
+    target.background.fill = am4core.color("#DCCCA3");
+  }
+}
+
+/* Apply it */
+// am4core.useTheme(am4themes_myTheme);

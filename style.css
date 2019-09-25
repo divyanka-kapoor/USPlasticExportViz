@@ -1,14 +1,82 @@
 html {
-  background-color: #30303d;
+  /* background-color: #333745; */
+  /* background-color: #1a1e1f; */
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: #30303d;
-  color: #fff;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: Montserrat,sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", CenturyGothic;
+  /* background-color: #3c3c4d; */
+  color: #e5e5e5;
+  background-color:#1a1e1f;
+}
+
+h1 {
+  font:CenturyGothic;
+  text-align: center;
+}
+
+
+.cd-section {
+  height: 100vh;
+}
+
+#numbero_uno {
+  background-color: #B8DBEE;
+  vertical-align: middle;
+  position: relative;
+}
+
+#numbero_uno h1{
+  position: absolute;
+  top: 40%;
+  text-align: center;
+  left: 20%;
+  color: #333745;
+}
+
+.counter{
+  position: absolute;
+  top: 60%;
+  text-align: center;
+  color: #333745;
+  font-size: 40;
+  color: black;
+}
+
+#waste_kg {
+  left: 28%;
+}
+
+#waste_dol {
+  left: 55%;
+}
+
+.intro {
+  height: 60vh;
+  width: 100vh;
+  float: right;
+  padding : 15px 15px 15px 15px;
+  margin : 10px 10px 10px 10px;
 }
 
 #chartdiv {
   width: 100%;
-  height: 700px;
+  height: 900px;
+}
+.container {
+	position: relative;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	background: {
+		/* image: linear-gradient(to bottom,  #00c9ff 0%, #92fe9d 100%), url(https://images.unsplash.com/photo-1502726299822-6f583f972e02);
+		blend-mode: multiply; */
+		size: cover;
+	}
+	overflow: visible;
+}
+
+p{
+  padding: 15px 30px 15px 30px;
 }
