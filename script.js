@@ -6,8 +6,7 @@ am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 // Themes end
 
-
-var temperatures = {
+var waste = {
     "EUROPE": [
         ["Austria",233,0,0,16217,13340,164878,0,0,7505,9801,4224,24307,6676,0,952,1339,6209,0],
         ["Belgium",2112059,1816033,1368022,1098944,1537163,949633,479138,272765,1069563,1008559,618829,329892,1255723,1211440,1262923,2818613,1485857],
@@ -91,7 +90,7 @@ var temperatures = {
     ],
     "NORTH AMERICA": [
       ["Anguilla",0,0,0,1306,25401,0,0,0,0,0,0,0,0,0,0,0,0],
-      ["Antigua and Barbuda",47455,1295,1664,0,1023,1250,308,0,0,751,2998,0,0,0,0,516,0],
+      ["Antigua",47455,1295,1664,0,1023,1250,308,0,0,751,2998,0,0,0,0,516,0],
       ["Aruba",62929,73573,478,22702,0,4942,8418,0,1262,238,2544,0,1920,1133,0,0,0],
       ["Bahamas",63304,397789,420297,527091,697220,575657,73368,26860,8166,33012,14810,12066,0,0,9181,45550,9072],
       ["Barbados",9603,0,1451,6136,12230,12234,25895,35708,2262,3545,0,4397,8827,2349,0,0,0],
@@ -99,11 +98,11 @@ var temperatures = {
       ["Bermuda",43485,48784,29029,32704,13337,20574,25343,13498,5550,1762,8969,13001,17294,4601,11416,6698,8913],
       ["British Virgin Islands",0,0,0,0,8281,0,455,12786,0,0,3071,404,2911,0,371,647,0],
       ["Canada",163739,74716,67745,628508,180843,225727,169622,96261,111466,37748,146085,36435,19374,102937,0,0,0],
-      ["Cayman Islands",2766,0,16910,37213,94579,32401,16992,11130,24575,11856,9077,50735,230329,70194,110832,36011,9027],
+      ["Cayman Island",2766,0,16910,37213,94579,32401,16992,11130,24575,11856,9077,50735,230329,70194,110832,36011,9027],
       ["Costa Rica",8631,275837,326301,312671,146098,78029,291431,220868,306075,151273,935942,820078,678206,385765,286421,1026661,695400],
       ["Curacao",0,0,0,0,0,0,0,0,0,0,0,0,1188,0,0,0,0],
       ["Dominica",1144,0,272,100,0,454,1251,0,0,0,183707,76357,0,0,0,0,176],
-      ["Dominican Republic",2560387,4566191,3465184,2754004,3945152,4457042,2560436,1854827,1703000,3491781,2534679,2159409,2721754,1781801,1258377,1060038,236704],
+      ["Dominican Rep.",2560387,4566191,3465184,2754004,3945152,4457042,2560436,1854827,1703000,3491781,2534679,2159409,2721754,1781801,1258377,1060038,236704],
       ["El Salvador",1436177,1643186,2352967,3035471,3389318,3467835,4005003,3680568,1295134,1905118,2154033,4636684,6613938,5417634,5659077,6083055,3864522],
       ["Grenada",0,0,18144,1683,0,0,1888,0,605,0,0,0,0,0,0,0,0],
       ["Guadeloupe",0,567,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -157,7 +156,7 @@ var temperatures = {
         ["Sri Lanka",0,0,481,0,0,0,0,0,0,0,19651,8600,0,20000,0,32987,60774],
         ["Taiwan",14020378,14841232,7546027,6966174,9660105,18553441,13658314,10347292,16329682,16479469,26754492,29500210,51199505,30541109,33893899,51024585,19476701],
         ["Thailand",430421,131343,5931,143963,201064,843483,399342,4017513,3223762,1000619,3741075,14288937,5885966,6549861,32840352,106734726,12667072],
-        ["United Arab Emirates",176136,482138,462107,372803,5037995,1801997,55864,78205,1147738,70108,555616,310462,299583,47683,1771042,1005301,245881],
+        ["UAE",176136,482138,462107,372803,5037995,1801997,55864,78205,1147738,70108,555616,310462,299583,47683,1771042,1005301,245881],
         ["Vietnam",277155,11079932,29630689,1638948,11716563,11371920,11597144,16255955,35055087,13602682,23087122,36240371,45065109,66360706,136229177,73868818,11273468],
         ["Yemen",0,0,0,0,0,18568,0,0,0,0,52227,224753,8000,7000,56021,14215,0],
         ["Russia",0,42941,170767,0,0,81633,7297,6600,0,0,0,1300,0,0,0,516589,1741099],
@@ -174,7 +173,7 @@ var temperatures = {
         ["Papua New Guinea",0,0,0,0,0,0,0,0,0,0,0,200000,0,0,0,0,0],
         ["Samoa",0,0,0,0,0,3865,19635,27852,32081,24077,20051,19987,21128,28340,11617,0,0],
         ["Tokelau",0,0,0,0,24449,0,0,0,0,0,0,0,0,0,0,0,0],
-        ["Heard and McDonald Islands",0,0,0,0,0,0,0,0,0,0,0,0,0,57000,0,0,0],
+        ["Heard Islands",0,0,0,0,0,0,0,0,0,0,0,0,0,57000,0,0,0],
     ],
 }
 
@@ -200,7 +199,7 @@ var yearLabel = chart.radarContainer.createChild(am4core.Label);
 yearLabel.horizontalCenter = "middle";
 yearLabel.verticalCenter = "middle";
 yearLabel.fill = am4core.color("#673AB7");
-yearLabel.fontSize = 40;
+yearLabel.fontSize = 45;
 yearLabel.text = String(currentYear);
 
 // zoomout button
@@ -219,7 +218,7 @@ chart.scrollbarX.exportable = false;
 
 // vertical orientation for zoom out button and scrollbar to be positioned properly
 chart.rightAxesContainer.layout = "vertical";
-chart.rightAxesContainer.padding(10, 0, 10, 0);
+chart.rightAxesContainer.padding(120, 20, 120, 20);
 
 // category axis
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -232,7 +231,7 @@ categoryAxisLabel.location = 0.5;
 categoryAxisLabel.radius = 28;
 categoryAxisLabel.relativeRotation = 90;
 
-categoryAxisRenderer.fontSize = 11;
+categoryAxisRenderer.fontSize = 15;
 categoryAxisRenderer.minGridDistance = 10;
 categoryAxisRenderer.grid.template.radius = -25;
 categoryAxisRenderer.grid.template.strokeOpacity = 0.05;
@@ -245,6 +244,7 @@ categoryAxisRenderer.line.disabled = true;
 categoryAxisRenderer.tooltipLocation = 0.5;
 categoryAxis.tooltip.defaultState.properties.opacity = 0;
 
+
 // value axis
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 2;
@@ -254,7 +254,7 @@ valueAxis.strictMinMax = true;
 valueAxis.tooltip.defaultState.properties.opacity = 0;
 valueAxis.tooltip.animationDuration = 0;
 valueAxis.cursorTooltipEnabled = true;
-valueAxis.zIndex = 1;
+valueAxis.zIndex = 10;
 
 var valueAxisRenderer = valueAxis.renderer;
 valueAxisRenderer.axisFills.template.disabled = true;
@@ -264,7 +264,7 @@ valueAxisRenderer.grid.template.strokeOpacity = 0.05;
 
 // series
 var series = chart.series.push(new am4charts.RadarColumnSeries());
-series.columns.template.width = am4core.percent(90);
+series.columns.template.width = am4core.percent(85);
 series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
@@ -272,7 +272,7 @@ series.tooltipText = "{categoryX}:{valueY.value}";
 
 
 // this makes columns to be of a different color depending on value
-series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 18757, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
+series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
 
 // cursor
 var cursor = new am4charts.RadarCursor();
@@ -291,7 +291,7 @@ cursor.fullWidthLineX = true;
 // year slider
 var yearSliderContainer = chart.createChild(am4core.Container);
 yearSliderContainer.layout = "vertical";
-yearSliderContainer.padding(5, 38, 0, 38);
+yearSliderContainer.padding(35, 38, 0, 38);
 yearSliderContainer.width = am4core.percent(80);
 yearSliderContainer.align = "center";
 
@@ -305,22 +305,35 @@ yearSlider.start = 0.5;
 yearSlider.exportable = false;
 // yearSlider.background = am4core.color("white");
 
+var label = yearSlider.createChild(am4core.Label);
+label.text = "Year : ";
+label.dx = -50;
+label.isMeasured = false;
+
 chart.data = generateRadarData();
 
 function generateRadarData() {
   var data = [];
   var i = 0;
-  for (var continent in temperatures) {
-      var continentData = temperatures[continent];
+  for (var continent in waste) {
+      var continentData = waste[continent];
 
       continentData.forEach(function (country) {
           var rawDataItem = { "country": country[0] }
 
           for (var y = 2; y < country.length; y++) {
+              // function sort(arr, value) {
+              //    return arr.filter(function(ele){
+              //        return ele != value;
+              //    });
+              // }
               rawDataItem["value" + (startYear + y - 2)] = country[y];
+              // var result = arrayRemove(country, 0);
+
           }
 
           data.push(rawDataItem);
+          // console.log(rawDataItem);
       });
 
       createRange(continent, continentData, i);
@@ -350,10 +363,10 @@ function createRange(name, continentData, index) {
     // last country
     axisRange.endCategory = continentData[continentData.length - 1][0];
 
-    // every 3rd color for a bigger contrast
-    axisRange.axisFill.fill = colorSet.getIndex(index * 3);
+    // every 4th color for a bigger contrast
+    axisRange.axisFill.fill = colorSet.getIndex(index * 4);
     axisRange.grid.disabled = true;
-    axisRange.label.interactionsEnabled = true;
+    axisRange.label.interactionsEnabled = false;
     axisRange.label.bent = true;
 
     var axisFill = axisRange.axisFill;
@@ -384,7 +397,7 @@ function createRange(name, continentData, index) {
 
     var axisLabel = axisRange.label;
     axisLabel.location = 0.5;
-    axisLabel.fill = am4core.color("#ffffff");
+    axisLabel.fill = am4core.color("black");
     axisLabel.radius = 3;
     axisLabel.relativeRotation = 0;
     // axisLabel.bent = true;
@@ -403,6 +416,11 @@ slider.events.on("rangechanged", function () {
 
     valueAxis.renderer.axisAngle = chart.startAngle;
 })
+
+var label = slider.createChild(am4core.Label);
+label.text = "Change Style : ";
+label.dx = -120;
+label.isMeasured = false;
 
 function am4themes_YankTheme(target) {
   if (target instanceof am4charts.Axis) {

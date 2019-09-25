@@ -33,7 +33,7 @@ h1 {
   text-align: center;
   left: 20%;
   color: #333745;
-  font-weight: normal; 
+  font-weight: normal;
 }
 
 .counter{
@@ -63,18 +63,17 @@ h1 {
 
 #chartdiv {
   width: 100%;
-  height: 900px;
+  height:125vh;
+  overflow: visible;
+  align-content: center;
+	justify-content: center;
 }
-.container {
+
+.containerss {
 	position: relative;
 	display: flex;
 	align-content: center;
 	justify-content: center;
-	background: {
-		/* image: linear-gradient(to bottom,  #00c9ff 0%, #92fe9d 100%), url(https://images.unsplash.com/photo-1502726299822-6f583f972e02);
-		blend-mode: multiply; */
-		size: cover;
-	}
 	overflow: visible;
 }
 
