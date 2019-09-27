@@ -20,8 +20,8 @@
 
         var funcNameHere = function(){
           kg = kg + 16;
-
-          num_kg.innerText = kg.toString().slice(0,3) + "," + kg.toString().slice(3,6) + "," + kg.toString().slice(6,9) + " kgs of plastic waste exported in 2019";
+          var textcntr = kg.toString().slice(0,3) + "," + kg.toString().slice(3,6) + "," + kg.toString().slice(6,9);
+          num_kg.innerHTML = textcntr.bold() + " kgs of plastic waste exported in 2019";
           // num_dol
         }
           // This block will be executed 100 times.

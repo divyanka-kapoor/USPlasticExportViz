@@ -272,7 +272,7 @@ categoryAxisLabel.tooltipPosition = "pointer";
 // categoryAxis.mouseEnabled = true;
 
 
-categoryAxisRenderer.fontSize = 15;
+categoryAxisRenderer.fontSize = 20;
 categoryAxisRenderer.minGridDistance = 10;
 categoryAxisRenderer.grid.template.radius = -25;
 categoryAxisRenderer.grid.template.strokeOpacity = 0.05;
@@ -398,11 +398,12 @@ function generateRadarData() {
       continentData.forEach(function (country) {
           var rawDataItem = { "country": country[0] }
 
-          for (var y = 2; y < country.length; y++) {
-              rawDataItem["value" + (startYear + y - 2)] = country[y];
+          for (var y = 1; y < country.length; y++) {
+              rawDataItem["value" + (startYear + y - 1)] = country[y];
           }
 
           data.push(rawDataItem);
+          console.log(rawDataItem);
       });
 
       createRange(continent, continentData, i);
@@ -419,7 +420,7 @@ function updateRadarData(year) {
         yearLabel.text = String(currentYear);
         series.dataFields.valueY = "value" + currentYear;
         labelTotalWaste.text = usTotalWaste[currentYear];
-        console.log((usTotalWaste[currentYear]));
+        console.log((series.dataFields.valueY));
         chart.invalidateRawData();
     }
 }
