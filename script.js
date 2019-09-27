@@ -177,6 +177,26 @@ var waste = {
     ],
 }
 
+var usTotalWaste = {
+  2003 :  "515 M",
+  2004 :  "553 M",
+  2005 :  "670 M",
+  2006 :  "889 M",
+  2007 :  "1.23 B",
+  2008 :  "1.47 B",
+  2009 :  "1.93 B",
+  2010 :  "1.91 B",
+  2011 :  "2.00 B",
+  2012 :  "1.90 B",
+  2013 :  "1.79 B",
+  2014 :  "1.99 B",
+  2015 :  "1.79 B",
+  2016 :  "1.75 B",
+  2017 :  "1.48 B",
+  2018 :  "893 M",
+  2019 :  "294 M",
+}
+
 
 var startYear = 2003;
 var endYear = 2019;
@@ -199,13 +219,21 @@ chart.padding(5, 15, 5, 10)
 chart.radius = am4core.percent(80);
 chart.innerRadius = am4core.percent(25);
 
+var labelTotalWaste = chart.createChild(am4core.Label);
+labelTotalWaste.fontSize = 80;
+labelTotalWaste.isMeasured = false;
+labelTotalWaste.x = 70;
+labelTotalWaste.y = -10;
+
 // year label goes in the middle
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
 yearLabel.horizontalCenter = "middle";
 yearLabel.verticalCenter = "middle";
 yearLabel.fill = am4core.color("#673AB7");
+// yearLabel.fill = am4core.color("#ffea05");
 yearLabel.fontSize = 45;
 yearLabel.text = String(currentYear);
+
 
 // zoomout button
 var zoomOutButton = chart.zoomOutButton;
@@ -241,7 +269,7 @@ categoryAxisLabel.location = 0.5;
 categoryAxisLabel.radius = 34;
 categoryAxisLabel.relativeRotation = 90;
 categoryAxisLabel.tooltipPosition = "pointer";
-categoryAxis.mouseEnabled = true;
+// categoryAxis.mouseEnabled = true;
 
 
 categoryAxisRenderer.fontSize = 15;
@@ -283,48 +311,23 @@ series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
 series.tooltipText = "{categoryX}:{valueY.value}";
-
+series.fill = am4core.color("#673AB7");
+// series.fill = am4core.color("#ffea05");
 
 // this makes columns to be of a different color depending on value
-series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
-
-// var heatLegend = container.createChild(am4charts.HeatLegend);
-
-var heatLegend = chart.leftAxesContainer.createChild(am4charts.HeatLegend);
-// heatLegend.layout = "vertical";
-// heatLegend.position = "left";
-// heatLegend.position = "vertical";
-heatLegend.valign = "middle";
-heatLegend.orientation = "vertical";
-heatLegend.height = am4core.percent(70);
-heatLegend.width = am4core.percent(10);
-// heatLegend.contentValign = true;
-// heatLegend.contentAlign = "vertical";
-heatLegend.series = series;
-heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
-// heatLegend.valueAxis.renderer.minGridDistance = 30;
+// series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
 //
-// // heat legend behavior
-// series.columns.template.events.on("over", function(event) {
-//   handleHover(event.target);
-// })
+// // var heatLegend = container.createChild(am4charts.HeatLegend);
 //
-// series.columns.template.events.on("hit", function(event) {
-//   handleHover(event.target);
-// })
+// var heatLegend = chart.leftAxesContainer.createChild(am4charts.HeatLegend);
 //
-// function handleHover(column) {
-//   if (!isNaN(column.dataItem.value)) {
-//     heatLegend.valueAxis.showTooltipAt()
-//   }
-//   else {
-//     heatLegend.valueAxis.hideTooltip();
-//   }
-// }
+// heatLegend.valign = "middle";
+// heatLegend.orientation = "vertical";
+// heatLegend.height = am4core.percent(70);
+// heatLegend.width = am4core.percent(10);
 //
-// series.columns.template.events.on("out", function(event) {
-//   heatLegend.valueAxis.hideTooltip();
-// })
+// heatLegend.series = series;
+// heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
 
 // cursor
 var cursor = new am4charts.RadarCursor();
@@ -343,7 +346,7 @@ cursor.fullWidthLineX = true;
 // year slider
 var yearSliderContainer = chart.createChild(am4core.Container);
 yearSliderContainer.layout = "vertical";
-yearSliderContainer.padding(35, 38, 0, 38);
+yearSliderContainer.padding(0, 38, 0, 38);
 yearSliderContainer.width = am4core.percent(80);
 yearSliderContainer.align = "center";
 
@@ -351,6 +354,7 @@ yearSliderContainer.align = "center";
 var yearSlider = yearSliderContainer.createChild(am4core.Slider);
 yearSlider.events.on("rangechanged", function () {
     updateRadarData(startYear + Math.round(yearSlider.start * (endYear - startYear)));
+    // updateLabelValue(startYear + Math.round(yearSlider.start * (endYear - startYear)));
 })
 yearSlider.orientation = "horizontal";
 yearSlider.start = 0.5;
@@ -414,10 +418,23 @@ function updateRadarData(year) {
         currentYear = year;
         yearLabel.text = String(currentYear);
         series.dataFields.valueY = "value" + currentYear;
+        labelTotalWaste.text = usTotalWaste[currentYear];
+        console.log((usTotalWaste[currentYear]));
         chart.invalidateRawData();
     }
 }
 
+
+// function updateLabelValue(year) {
+//   if (currentYear != year) {
+//       currentYear = year;
+//       yearLabel.text = String(currentYear);
+//       labelTotalWaste.text = usTotalWaste.currentYear;
+//       console.log(year);
+// //       // series.dataFields.valueY = "value" + currentYear;
+//       // chart.invalidateRawData();
+//   }
+// }
 
 function createRange(name, continentData, index) {
 
@@ -428,8 +445,16 @@ function createRange(name, continentData, index) {
     axisRange.category = continentData[0][0];
     // last country
     axisRange.endCategory = continentData[continentData.length - 1][0];
-
+    // chart.colors.list = [
+    //   am4core.color("#ffea05"),
+    //   am4core.color("#67DADC"),
+    //   am4core.color("#DC6967"),
+    //   am4core.color("#FF9671"),
+    //   am4core.color("#FFC75F"),
+    //   am4core.color("#F9F871")
+    // ];
     // every 4th color for a bigger contrast
+    axisRange.axisFill.fill = chart.colors.list;
     axisRange.axisFill.fill = colorSet.getIndex(index * 6);
     axisRange.grid.disabled = true;
     axisRange.label.interactionsEnabled = false;

@@ -22,7 +22,8 @@ h1 {
 }
 
 #numbero_uno {
-  background-color: #B8DBEE;
+  /* background-color: #B8DBEE; */
+  background-color: #f06a59;
   vertical-align: middle;
   position: relative;
 }
@@ -37,7 +38,7 @@ h1 {
 }
 
 #numbero_doice {
-  background-color: #B8DBEE;
+  /* background-color: #B8DBEE; */
 }
 
 .counter{
@@ -67,7 +68,7 @@ h1 {
 
 #chartdiv {
   width: 100%;
-  height:125vh;
+  height:110vh;
   overflow: visible;
   align-content: center;
 	justify-content: center;
