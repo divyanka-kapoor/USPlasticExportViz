@@ -224,6 +224,7 @@ labelTotalWaste.fontSize = 80;
 labelTotalWaste.isMeasured = false;
 labelTotalWaste.x = 70;
 labelTotalWaste.y = -10;
+labelTotalWaste.text = usTotalWaste[2011];
 
 // year label goes in the middle
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
@@ -231,7 +232,7 @@ yearLabel.horizontalCenter = "middle";
 yearLabel.verticalCenter = "middle";
 yearLabel.fill = am4core.color("#673AB7");
 // yearLabel.fill = am4core.color("#ffea05");
-yearLabel.fontSize = 45;
+yearLabel.fontSize = 85;
 yearLabel.text = String(currentYear);
 
 
