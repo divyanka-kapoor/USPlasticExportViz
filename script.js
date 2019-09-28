@@ -233,10 +233,10 @@ labelTotalWaste.text = "\n" + String(currentYear) + " : " ;
 
 
 var labelTotalWaste1 = am4core.create("wastevaldiv",am4core.Label);
-labelTotalWaste1.fontSize = 80;
+labelTotalWaste1.fontSize = 100;
 labelTotalWaste1.isMeasured = false;
 labelTotalWaste1.padding(0, 0, 0, 90);
-labelTotalWaste1.dx = 120;
+labelTotalWaste1.dx = 80;
 labelTotalWaste1.dy = -150;
 
 labelTotalWaste1.text = usTotalWaste[2011];
@@ -281,8 +281,8 @@ yearSliderContainer.padding(0, 0, 0, 170);
 yearSliderContainer.overflow = "visible";
 yearSliderContainer.width = am4core.percent(28);
 yearSliderContainer.align = "left";
-yearSliderContainer.dx = -550;
-yearSliderContainer.dy = -700;
+yearSliderContainer.dx = -580;
+yearSliderContainer.dy = -550;
 
 // category axis
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
