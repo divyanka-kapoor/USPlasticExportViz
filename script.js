@@ -210,50 +210,79 @@ chart.numberFormatter.bigNumberPrefixes = [
   { "number": 1e+6, "suffix": "M" },
   { "number": 1e+9, "suffix": "B" }
 ];
+// chart.numberFormatter.fill = am4core.color("#A95166");
 chart.hiddenState.properties.opacity = 0;
 
 chart.startAngle = 270 - 180;
 chart.endAngle = 270 + 180;
 
-chart.padding(5, 15, 5, 10)
+// chart.padding(5, 5, 5, 5)
 chart.radius = am4core.percent(80);
 chart.innerRadius = am4core.percent(25);
 
-var labelTotalWaste = chart.createChild(am4core.Label);
-labelTotalWaste.fontSize = 80;
+
+var labelTotalWaste = am4core.create("yeardiv",am4core.Label);
+labelTotalWaste.fontSize = 40;
 labelTotalWaste.isMeasured = false;
-labelTotalWaste.x = 70;
-labelTotalWaste.y = -10;
-labelTotalWaste.text = usTotalWaste[2011];
+labelTotalWaste.padding(0, 0, 0, 50);
+labelTotalWaste.dx = 466;
+labelTotalWaste.dy = -129;
+// labelTotalWaste.marginBottom = 15;
+
+labelTotalWaste.text = "\n" + String(currentYear) + " : " ;
+
+
+var labelTotalWaste1 = am4core.create("wastevaldiv",am4core.Label);
+labelTotalWaste1.fontSize = 80;
+labelTotalWaste1.isMeasured = false;
+labelTotalWaste1.padding(0, 0, 0, 90);
+labelTotalWaste1.dx = 120;
+labelTotalWaste1.dy = -150;
+
+labelTotalWaste1.text = usTotalWaste[2011];
 
 // year label goes in the middle
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
 yearLabel.horizontalCenter = "middle";
 yearLabel.verticalCenter = "middle";
-yearLabel.fill = am4core.color("#673AB7");
+yearLabel.fill = am4core.color("#A95166");
 // yearLabel.fill = am4core.color("#ffea05");
-yearLabel.fontSize = 85;
+yearLabel.fontSize = 95;
+yearLabel.fontWeight = "normal";
 yearLabel.text = String(currentYear);
 
 
 // zoomout button
-var zoomOutButton = chart.zoomOutButton;
-zoomOutButton.dx = 0;
-zoomOutButton.dy = 0;
-zoomOutButton.marginBottom = 15;
-zoomOutButton.parent = chart.rightAxesContainer;
+// var zoomOutButton = chart.zoomOutButton;
+// zoomOutButton.dx = 0;
+// zoomOutButton.dy = 0;
+// zoomOutButton.marginBottom = 15;
+// zoomOutButton.parent = chart.rightAxesContainer;
 
 // scrollbar
 chart.scrollbarX = new am4core.Scrollbar();
 chart.scrollbarX.parent = chart.rightAxesContainer;
 chart.scrollbarX.orientation = "vertical";
-chart.scrollbarX.align = "center";
+// chart.scrollbarX.align = "left";
 chart.scrollbarX.exportable = false;
-chart.scrollbarX.label = "test";
 
 // vertical orientation for zoom out button and scrollbar to be positioned properly
 chart.rightAxesContainer.layout = "vertical";
-chart.rightAxesContainer.padding(120, 20, 120, 20);
+chart.rightAxesContainer.padding(120, 0, 120, -100);
+
+
+var yearSliderContainer = am4core.create("slidervaldiv", am4core.Container);
+// var legendContainer = am4core.create("legenddiv", am4core.Container);
+// year slider
+// var yearSliderContainer = chart.createChild(am4core.Container);
+// yearSliderContainer.labelOffset = -300;
+yearSliderContainer.layout = "vertical";
+yearSliderContainer.padding(0, 0, 0, 170);
+yearSliderContainer.overflow = "visible";
+yearSliderContainer.width = am4core.percent(28);
+yearSliderContainer.align = "left";
+yearSliderContainer.dx = -550;
+yearSliderContainer.dy = -700;
 
 // category axis
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -312,7 +341,9 @@ series.columns.template.strokeOpacity = 0;
 series.dataFields.valueY = "value" + currentYear;
 series.dataFields.categoryX = "country";
 series.tooltipText = "{categoryX}:{valueY.value}";
-series.fill = am4core.color("#673AB7");
+series.fill = am4core.color("#A95166");
+series.align = "right";
+// zoomOutButton.parent = chart.rightAxesContainer;
 // series.fill = am4core.color("#ffea05");
 
 // this makes columns to be of a different color depending on value
@@ -344,12 +375,7 @@ cursor.lineX.fill = am4core.color("#000000");
 cursor.lineX.strokeOpacity = 0;
 cursor.fullWidthLineX = true;
 
-// year slider
-var yearSliderContainer = chart.createChild(am4core.Container);
-yearSliderContainer.layout = "vertical";
-yearSliderContainer.padding(0, 38, 0, 38);
-yearSliderContainer.width = am4core.percent(80);
-yearSliderContainer.align = "center";
+
 
 
 var yearSlider = yearSliderContainer.createChild(am4core.Slider);
@@ -363,11 +389,17 @@ yearSlider.exportable = false;
 yearSlider.background.fill = am4core.color("#676767");
 // yearSlider.background = am4core.color("white");
 
-
+// yearSlider.addListener("drag", function(event) {
+//   var b = document.getElementById("year");
+//   console.log(event);
+//   // b.innerHTML = event.item.yearSlider + ": <b>" + event.item.values.value + "</b>";
+//   // b.style.display = "block";
+// });
 
 var label = yearSlider.createChild(am4core.Label);
 label.text = "Year : ";
-label.dx = -50;
+label.fontSize = 20;
+label.dx = -55;
 label.dy = -5;
 label.isMeasured = false;
 
@@ -384,7 +416,8 @@ scaleRangeSlider.events.on("rangechanged", function () {
 
 var label = scaleRangeSlider.createChild(am4core.Label);
 label.text = "Change Scale : ";
-label.dx = -125;
+label.fontSize = 20;
+label.dx = -150;
 label.dy = -5;
 label.isMeasured = false;
 
@@ -404,7 +437,7 @@ function generateRadarData() {
           }
 
           data.push(rawDataItem);
-          console.log(rawDataItem);
+          // console.log(rawDataItem);
       });
 
       createRange(continent, continentData, i);
@@ -420,8 +453,9 @@ function updateRadarData(year) {
         currentYear = year;
         yearLabel.text = String(currentYear);
         series.dataFields.valueY = "value" + currentYear;
-        labelTotalWaste.text = usTotalWaste[currentYear];
-        console.log((series.dataFields.valueY));
+        labelTotalWaste.text = "\n" + String(currentYear) + " : " ;
+        labelTotalWaste1.text = usTotalWaste[currentYear];
+        // console.log((series.dataFields.valueY));
         chart.invalidateRawData();
     }
 }
@@ -447,14 +481,7 @@ function createRange(name, continentData, index) {
     axisRange.category = continentData[0][0];
     // last country
     axisRange.endCategory = continentData[continentData.length - 1][0];
-    // chart.colors.list = [
-    //   am4core.color("#ffea05"),
-    //   am4core.color("#67DADC"),
-    //   am4core.color("#DC6967"),
-    //   am4core.color("#FF9671"),
-    //   am4core.color("#FFC75F"),
-    //   am4core.color("#F9F871")
-    // ];
+
     // every 4th color for a bigger contrast
     axisRange.axisFill.fill = chart.colors.list;
     axisRange.axisFill.fill = colorSet.getIndex(index * 6);
@@ -516,7 +543,8 @@ slider.events.on("rangechanged", function () {
 
 var label = slider.createChild(am4core.Label);
 label.text = "Change Style : ";
-label.dx = -120;
+label.fontSize = 20;
+label.dx = -145;
 label.isMeasured = false;
 label.dy = -5;
 

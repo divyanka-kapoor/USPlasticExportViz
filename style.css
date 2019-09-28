@@ -13,9 +13,14 @@ body {
 
 h1 {
   font:CenturyGothic;
-  text-align: center;
+  /* text-align: center; */
 }
 
+h2 {
+  font:CenturyGothic;
+  margin-left: 5%;
+  /* margin-bottom: 5%; */
+}
 
 .cd-section {
   height: 100vh;
@@ -24,16 +29,16 @@ h1 {
 #numbero_uno {
   /* background-color: #B8DBEE; */
   background-color: #f06a59;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   position: relative;
 }
 
 #numbero_uno h1{
   position: absolute;
   top: 40%;
-  text-align: center;
+  /* text-align : center; */
   left: 20%;
-  color: #333745;
+  color: black;
   font-weight: normal;
 }
 
@@ -43,10 +48,10 @@ h1 {
 
 .counter{
   position: absolute;
-  top: 60%;
+  top: 50%;
   text-align: center;
-  color: #333745;
-  font-size: 40;
+  /* color: #333745; */
+  font-size: 60;
   color: black;
 }
 
@@ -58,6 +63,11 @@ h1 {
 #waste_dol {
   left: 55%;
 }
+
+/* #yeardiv {
+  width: 15%;
+  float: left;
+} */
 
 .intro {
   height: 60vh;
@@ -71,9 +81,26 @@ h1 {
   width: 100%;
   height:110vh;
   overflow: visible;
-  align-content: center;
-	justify-content: center;
+  overflow-x: visible;
+  overflow-y: visible;
+  align-content: right;
+	justify-content: right;
+  position: relative;
 }
+
+ #slidervaldiv {
+  height:20vh;
+ }
+
+ #yeardiv {
+   height:10vh;
+   font-size: 30;
+ }
+
+ #wastevaldiv {
+   height:10vh;
+   font-size: 80;
+ }
 
 .containerss {
 	position: relative;
@@ -85,4 +112,46 @@ h1 {
 
 p{
   padding: 15px 30px 15px 30px;
+}
+
+.p0 {
+  font-size: 100;
+  text-align: center;
+  position: relative;
+  top: 30%;
+  color: black;
+}
+
+.p1 {
+  font-size: 50;
+}
+
+.p2 {
+  font-size: 30;
+}
+
+.p3 {
+  font-size: 15;
+  text-align: center;
+  padding-top: 7%;
+}
+
+#container {
+    width: 100%;
+    margin: auto;
+}
+#first {
+    width: 20%;
+    float: left;
+    height: 100%;
+    overflow-x: visible;
+    position: relative
+    opacity: 20%;
+}
+#second {
+    width: 80%;
+    float: left;
+    height: 100%;
+    overflow: visible;
+    position: relative;
 }

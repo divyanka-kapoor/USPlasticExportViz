@@ -6,6 +6,8 @@
     <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
     <title> US Plastic Waste Export</title>
@@ -21,7 +23,7 @@
         var funcNameHere = function(){
           kg = kg + 16;
           var textcntr = kg.toString().slice(0,3) + "," + kg.toString().slice(3,6) + "," + kg.toString().slice(6,9);
-          num_kg.innerHTML = textcntr.bold() + " kgs of plastic waste exported in 2019";
+          num_kg.innerHTML = textcntr.bold() + " <br />kgs of plastic waste exported by US in 2019";
           // num_dol
         }
           // This block will be executed 100 times.
@@ -34,44 +36,66 @@
   </head>
   <body>
     <section class="cd-section visible" id = "numbero_uno">
-        <h1 class="display-1 text-center">WHERE DID THE WASTE GO? 🤔</h1>
-      <!-- <h1 align="center"> </h1> -->
+      <p class="p0" align="center">WHERE DID THE WASTE GO?</h1>
       <br />
       <div class="counter" id="waste_kg" >
-      </div>
-      <div class="counter" id="waste_dol">
       </div>
       </p>
     </section>
     <section class="cd-section visible" id = "numbero_doice">
        <div>
          <div class="intro">
-           <p>
+           <!-- <p>
              <h1></t>OUT OF SIGHT OUT OF MIND? </t></h1>
               <br>
               United States is the top exporter of Plastic Waste worldwide, sending over <u>a MILLION tons</u> of Plastic waste overseas in 2018. Majority of this waste goes to developing countries, who don't have the resources to properly manage the waste, and thus, a huge propotion of this waste ends up in landfills and our oceans.
               <br />
               <br />
               Here's a sneak peak into the Plastic Waste exports from US to different countries from 2003 to 2019 (July).
-
             <br />
             <br />
-         </p>
+         </p> -->
+         </div>
+         <div id = "animation">
+           <br>
+           <p>
+              blah
+           </p>
+           <script src = "animation.js"></script>
          </div>
        </div>
     </section>
 
     <section class="cd-section visible">
 
-      <h2 align = "center">
-        Chart for total amount of Waste exported by US worldwide (2003 - Jul 2019)
-        <br />
-        <br />
-      </h2>
-        <div id="chartdiv">
-          <br>
-          <script src = "script.js"></script>
+      <div id="container">
+        <div id="first">
+          <p class = "p1" align = "left">
+            <br />
+            <t>Total amount of Waste exported by US worldwide</t>
+            <br /> <t> (2003 - Jul 2019) </t>
+            <br />
+            <br />
+            <br />
+          </p>
+          <p class = "p2">
+             Plastic Waste exported by US in
+             <div id="yeardiv">
+             </div>
+          </p>
+          <div id="wastevaldiv">
+          </div>
+            <script src = "script.js"></script>
         </div>
+        <div id="second">
+          <div id="chartdiv">
+            <br />
+          </div>
+          <div id="slidervaldiv">
+          </div>
+            <script src = "script.js"></script>
+        </div>
+      </div>
   </section>
       <!-- <h4 align = "center"> Let's look at how this would look on a map</h4>
       <br />
@@ -84,6 +108,9 @@
          <br />
          2. Improve domestic recycling
       </p> -->
-
+      <p class = "p3">
+        ~ Created by Divyanka Kapoor ~ <br />
+         <i>Data source : https://usatrade.census.gov/</i>
+      </p>
   </body>
 </html>
