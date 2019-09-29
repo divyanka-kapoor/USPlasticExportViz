@@ -26,32 +26,37 @@ h2 {
   height: 100vh;
 }
 
+.filler {
+  height: 20vh;
+  background-color:#1a1e1f;
+}
+
 #numbero_uno {
   /* background-color: #B8DBEE; */
   background-color: #f06a59;
   /* vertical-align: middle; */
   position: relative;
 }
-
+/*
 #numbero_uno h1{
   position: absolute;
   top: 40%;
-  /* text-align : center; */
+  text-align : center;
   left: 20%;
   color: black;
   font-weight: normal;
-}
+} */
 
 #numbero_doice {
   /* background-color: #B8DBEE; */
 }
 
-.counter{
-  position: absolute;
-  top: 50%;
+div.counter{
+  /* top: 70%; */
   text-align: center;
   /* color: #333745; */
-  font-size: 60;
+  /* padding-top: 5%; */
+  font-size: 80;
   color: black;
 }
 
@@ -115,15 +120,16 @@ p{
 }
 
 .p0 {
-  font-size: 100;
+  font-size: 80;
   text-align: center;
   position: relative;
-  top: 30%;
+  top: 60%;
   color: black;
 }
 
 .p1 {
-  font-size: 50;
+  font-size: 60;
+  text-align: center;
 }
 
 .p2 {
@@ -154,4 +160,10 @@ p{
     height: 100%;
     overflow: visible;
     position: relative;
+}
+
+.gif {
+  float : right;
+  width: auto;
+  height: 40%;
 }

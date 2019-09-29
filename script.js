@@ -217,7 +217,7 @@ chart.startAngle = 270 - 180;
 chart.endAngle = 270 + 180;
 
 // chart.padding(5, 5, 5, 5)
-chart.radius = am4core.percent(80);
+chart.radius = am4core.percent(75);
 chart.innerRadius = am4core.percent(25);
 
 
@@ -233,7 +233,7 @@ labelTotalWaste.text = "\n" + String(currentYear) + " : " ;
 
 
 var labelTotalWaste1 = am4core.create("wastevaldiv",am4core.Label);
-labelTotalWaste1.fontSize = 100;
+labelTotalWaste1.fontSize = 65;
 labelTotalWaste1.isMeasured = false;
 labelTotalWaste1.padding(0, 0, 0, 90);
 labelTotalWaste1.dx = 80;
@@ -245,9 +245,10 @@ labelTotalWaste1.text = usTotalWaste[2011];
 var yearLabel = chart.radarContainer.createChild(am4core.Label);
 yearLabel.horizontalCenter = "middle";
 yearLabel.verticalCenter = "middle";
-yearLabel.fill = am4core.color("#A95166");
+// yearLabel.fill = am4core.color("#A95166");
 // yearLabel.fill = am4core.color("#ffea05");
-yearLabel.fontSize = 95;
+yearLabel.fill = am4core.color("#d8d8d8");
+yearLabel.fontSize = 65;
 yearLabel.fontWeight = "normal";
 yearLabel.text = String(currentYear);
 
@@ -265,6 +266,7 @@ chart.scrollbarX.parent = chart.rightAxesContainer;
 chart.scrollbarX.orientation = "vertical";
 // chart.scrollbarX.align = "left";
 chart.scrollbarX.exportable = false;
+chart.scrollbarX.background.fill = am4core.color("#d8d8d8");
 
 // vertical orientation for zoom out button and scrollbar to be positioned properly
 chart.rightAxesContainer.layout = "vertical";
@@ -327,6 +329,7 @@ valueAxis.tooltip.animationDuration = 0;
 valueAxis.cursorTooltipEnabled = true;
 valueAxis.zIndex = 10;
 valueAxis.dx = -25;
+// valueAxis.logarithmic = true;
 
 var valueAxisRenderer = valueAxis.renderer;
 valueAxisRenderer.axisFills.template.disabled = true;
@@ -343,12 +346,13 @@ series.dataFields.categoryX = "country";
 series.tooltipText = "{categoryX}:{valueY.value}";
 series.fill = am4core.color("#A95166");
 series.align = "right";
+
 // zoomOutButton.parent = chart.rightAxesContainer;
 // series.fill = am4core.color("#ffea05");
 
 // this makes columns to be of a different color depending on value
 // series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 12792736, min: am4core.color("#673AB7"), max: am4core.color("#BF0E41"), dataField: "valueY" });
-//
+   // series.adapter.add({target: series.columns.template, property: "fill"})
 // // var heatLegend = container.createChild(am4charts.HeatLegend);
 //
 // var heatLegend = chart.leftAxesContainer.createChild(am4charts.HeatLegend);
@@ -386,7 +390,7 @@ yearSlider.events.on("rangechanged", function () {
 yearSlider.orientation = "horizontal";
 yearSlider.start = 0.5;
 yearSlider.exportable = false;
-yearSlider.background.fill = am4core.color("#676767");
+yearSlider.background.fill = am4core.color("#d8d8d8");
 // yearSlider.background = am4core.color("white");
 
 // yearSlider.addListener("drag", function(event) {
@@ -407,7 +411,7 @@ var scaleRangeSlider = yearSliderContainer.createChild(am4core.Slider);
 scaleRangeSlider.orientation = "horizontal";
 scaleRangeSlider.start = 0.35;
 scaleRangeSlider.exportable = false;
-scaleRangeSlider.background.fill = am4core.color("#676767");
+scaleRangeSlider.background.fill = am4core.color("#d8d8d8");
 scaleRangeSlider.events.on("rangechanged", function () {
     var start = scaleRangeSlider.start;
     valueAxis.max = 1200000 * Math.pow(10,start*3);
@@ -489,6 +493,7 @@ function createRange(name, continentData, index) {
     axisRange.label.interactionsEnabled = false;
     axisRange.label.bent = true;
 
+
     var axisFill = axisRange.axisFill;
     axisFill.innerRadius = -0.001; // almost the same as 100%, we set it in pixels as later we animate this property to some pixel value
     axisFill.radius = -30; // negative radius means it is calculated from max radius
@@ -531,7 +536,7 @@ function createRange(name, continentData, index) {
 var slider = yearSliderContainer.createChild(am4core.Slider);
 slider.start = 1;
 slider.exportable = false;
-slider.background.fill = am4core.color("#676767");
+slider.background.fill = am4core.color("#d8d8d8");
 slider.events.on("rangechanged", function () {
     var start = slider.start;
 
